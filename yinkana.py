@@ -2,7 +2,7 @@
 # -*- coding: utf-8; mode: python -*-
 # Elena Martín Cantero, DNI - 70592187N
 
-from os import truncate
+
 import socket
 import hashlib
 import sys
