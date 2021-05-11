@@ -236,7 +236,7 @@ def reto6 (id):
 
     sockS.close()
         
-
+########################################## HANDLE FIRST ######################################################            
 def handleFirst(sockR):
     q = queue.Queue(1)
     cond = True
@@ -255,9 +255,7 @@ def handleFirst(sockR):
     if next != "error":
         reto7(get_id(next))       
     
-    
-   
-
+########################################## HANDLE ######################################################            
 def handle(client, addr, q):
     msgR = client.recv(2048).decode()
     if msgR[0:3] == "GET":
@@ -274,7 +272,9 @@ def handle(client, addr, q):
         
         
     client.close()
-   
+
+########################################## RETO 7 ######################################################            
+#Reto final
 def reto7(id):
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     sock.connect(('rick', 33333))
