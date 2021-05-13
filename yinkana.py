@@ -45,10 +45,10 @@ def reto0():
 
     msgR = sock.recv(1024).decode() 
     print(msgR)
-    
+    sock.close()
     if msgR[0:10] == "identifier":
         reto1(get_id(msgR))
-    sock.close()
+    
 
 ########################################## RETO 1 ######################################################
 #Test Chamber 1: UDP
@@ -104,9 +104,10 @@ def reto2(id):
     sock.send(msgS.encode()) 
 
     next = clean_buffer(sock) 
+    sock.close()
     if next != "error": 
         reto3(next)
-    sock.close()
+    
 
 ########################################## RETO 3 ######################################################            
 #Test Chamber 3: Decrypt words
@@ -148,11 +149,10 @@ def reto3 (id):
     sock.send(msgS.encode())  
 
     next = clean_buffer(sock) 
+    sock.close()
     if next != "error": 
         reto4(next)
-    sock.close()
     
-    sock.close()
 
 ########################################## RETO 4 ######################################################            
 #Test Chamber 4: SHA1
@@ -180,9 +180,10 @@ def reto4(id):
     sock.send(sol) 
 
     next = clean_buffer(sock) 
+    sock.close()
     if next != "error":
         reto5(next)
-    sock.close()
+    
 
 ########################################## RETO 5 ######################################################            
 #Test Chamber 5: WYP
@@ -286,5 +287,6 @@ def reto7(id):
     sock.send(id.encode())
     final = sock.recv(1024).decode()
     print(final)
+    sock.close()
 
 reto0()
