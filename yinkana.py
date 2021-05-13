@@ -170,6 +170,7 @@ def reto4(id):
     while size > len(bin): 
         bin += sock.recv(1024)
     
+    bin = bin[:size]
     sol = hashlib.sha1(bin).digest() 
     sock.send(sol) 
 
