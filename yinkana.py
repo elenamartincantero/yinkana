@@ -162,11 +162,16 @@ def reto4(id):
 
     sock.send(id.encode()) 
 
-    msg = sock.recv(1024) 
-    size = msg.split(bytes(":", 'ascii'))[0] 
+    bin = b''
+    size = sock.recv(1).decode()
+    while True:
+        nextC = sock.recv(1).decode()
+        if nextC == ':':
+            break
+        else:
+            size += nextC
+    
     size = int(size)
-
-    bin = msg.split(bytes(":", 'ascii'))[1] 
     while size > len(bin): 
         bin += sock.recv(1024)
     
